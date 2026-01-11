@@ -14,8 +14,11 @@ export class Canvas {
     }
 
     resize(width, height) {
-        this.canvas.width = width * 2;
-        this.canvas.height = height * 2;
-        this.ctx.scale(2, 2);
+        const ratio = width > 2500 ? 1 : 2;
+
+        this.canvas.width = width * ratio;
+        this.canvas.height = height * ratio;
+        
+        this.ctx.scale(ratio, ratio);
     }
 }
