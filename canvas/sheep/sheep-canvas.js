@@ -77,4 +77,9 @@ export class SheepCanvas {
 
         this.sheepController.draw(this.ctx, t, dots);
     }
+
+    addSheep() {
+        console.log("🐑 캔버스: 양 추가 신호 받음!");
+        this.sheepController.addSheep();
+    }
 }
