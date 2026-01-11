@@ -67,8 +67,8 @@ export class SheepCanvas {
         this.ctx.fillStyle = this.skyColor;
         this.ctx.fillRect(0, 0, this.stageWidth, this.stageHeight);
 
-        this.sun.draw(this.ctx, t);
         this.moon.draw(this.ctx, t);
+        this.sun.draw(this.ctx, t);
 
         let dots;
         for (let i = 0; i < this.hills.length; i++) {
