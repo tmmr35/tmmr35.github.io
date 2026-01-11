@@ -1,4 +1,6 @@
 import { Container } from "../../component/container.js";
+import { SunriseButton } from "./sunrise-button.js";
+import { SummonSheepButton } from "./summon-sheep-button.js";
 
 export class MainContainer {
     constructor(sheepCanvas) {
@@ -19,6 +21,7 @@ export class MainContainer {
         this.container = containerInstance.getElement();
         this.renderNavButton();
         this.renderSunriseButton();
+        this.renderSummonSheepButton();
     }
 
     renderNavButton() {
@@ -34,22 +37,14 @@ export class MainContainer {
     }
 
     renderSunriseButton() {
-        const button = document.createElement("button");
-        button.textContent = "Day Night";
-        button.className = "navigation-button";
+        const sunriseBtn = new SunriseButton(this.sheepCanvas);
 
-        button.addEventListener("click", () => {
-            if (this.isDay) {
-                console.log("해가 져요");
-                this.sheepCanvas.sunRise(false);
-                this.isDay = false;
-            } else {
-                console.log("해가 떠요");
-                this.sheepCanvas.sunRise(true);
-                this.isDay = true;
-            }
-        });
+        this.container.appendChild(sunriseBtn.getElement());
+    }
 
-        this.container.appendChild(button);
+    renderSummonSheepButton() {
+        const summonSheepBtn = new SummonSheepButton(this.sheepCanvas);
+
+        this.container.appendChild(summonSheepBtn.getElement());
     }
 }
