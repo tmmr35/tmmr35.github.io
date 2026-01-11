@@ -23,6 +23,7 @@ export class SheepCanvas {
         this.sheepController = new SheepController();
 
         this.skyColor = "#ffcaec";
+        document.body.style.backgroundColor = this.skyColor;
 
         window.addEventListener("resize", this.resize.bind(this), false);
         this.resize();
@@ -39,6 +40,8 @@ export class SheepCanvas {
         } else {
             this.skyColor = "#4a6171";
         }
+
+        document.body.style.backgroundColor = this.skyColor;
 
         for (let i = 0; i < this.hills.length; i++) {
             this.hills[i].setIsDay(isDay);

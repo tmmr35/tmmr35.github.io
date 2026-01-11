@@ -14,7 +14,7 @@ export class Canvas {
     }
 
     resize(width, height) {
-        const ratio = width > 2500 ? 1 : 2;
+        const ratio = window.devicePixelRatio;
 
         this.canvas.width = width * ratio;
         this.canvas.height = height * ratio;

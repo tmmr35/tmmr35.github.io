@@ -1,6 +1,7 @@
 import { Container } from "../../component/container.js";
 import { SunriseButton } from "./sunrise-button.js";
 import { SummonSheepButton } from "./summon-sheep-button.js";
+import { ContentButton } from "./content-button.js";
 
 export class MainContainer {
     constructor(sheepCanvas) {
@@ -22,6 +23,7 @@ export class MainContainer {
         this.renderNavButton();
         this.renderSunriseButton();
         this.renderSummonSheepButton();
+        this.renderContentButton();
     }
 
     renderNavButton() {
@@ -46,5 +48,10 @@ export class MainContainer {
         const summonSheepBtn = new SummonSheepButton(this.sheepCanvas);
 
         this.container.appendChild(summonSheepBtn.getElement());
+    }
+
+    renderContentButton() {
+        const contentBtn = new ContentButton();
+        this.container.appendChild(contentBtn.getElement());
     }
 }
