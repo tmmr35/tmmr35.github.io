@@ -35,26 +35,47 @@ export class MainContainer {
 
     renderSunriseButton() {
         const button = document.createElement("button");
-
-        if (this.isDay) {
-            button.textContent = "Day";
-        } else {
-            button.textContent = "Night";
-        }
         button.className = "float-button";
 
-        button.addEventListener("click", () => {
-            if (this.isDay) {
-                button.textContent = "Night";
-                console.log("해가 져요");
-                this.sheepCanvas.sunRise(false);
-                this.isDay = false;
-            } else {
-                button.textContent = "Day";
-                console.log("해가 떠요");
-                this.sheepCanvas.sunRise(true);
-                this.isDay = true;
+        button.style.top = "30px";
+        button.style.right = "30px";
+
+        const theme = {
+            day: {
+                default: "#ff79b0",
+                hover: "#607D8B"
+            },
+            night: {
+                default: "#607D8B",
+                hover: "#ff79b0"
             }
+        };
+
+        const updateButtonStyle = () => {
+            const currentTheme = this.isDay ? theme.day : theme.night;
+            
+            button.textContent = this.isDay ? "Day" : "Night";
+            button.style.backgroundColor = currentTheme.default;
+            
+            button.onmouseenter = () => {
+                button.style.backgroundColor = currentTheme.hover;
+                button.textContent = this.isDay ? "Night" : "Day";
+            };
+            button.onmouseleave = () => {
+                button.style.backgroundColor = currentTheme.default;
+                button.textContent = this.isDay ? "Day" : "Night";
+            };
+        };
+
+        updateButtonStyle();
+
+        button.addEventListener("click", () => {
+            this.isDay = !this.isDay;
+            
+            this.sheepCanvas.sunRise(this.isDay);
+            console.log(this.isDay ? "해가 떠요" : "해가 져요");
+
+            updateButtonStyle();
         });
 
         this.container.appendChild(button);
