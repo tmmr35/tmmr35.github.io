@@ -14,7 +14,7 @@ export class Sheep {
         this.sheepWidthHalf = this.sheepWidth / 2;
         this.x = stageWidth + this.sheepWidth;
         this.y = 0;
-        this.speed = Math.random() * 2 + 1;
+        this.speed = (Math.random() + 1) * 0.5;
 
         this.fps = 24;
         this.fpsTime = 1000 / this.fps;
