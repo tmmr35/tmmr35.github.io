@@ -35,15 +35,22 @@ export class MainContainer {
 
     renderSunriseButton() {
         const button = document.createElement("button");
-        button.textContent = "Day Night";
-        button.className = "navigation-button";
+
+        if (this.isDay) {
+            button.textContent = "Day";
+        } else {
+            button.textContent = "Night";
+        }
+        button.className = "float-button";
 
         button.addEventListener("click", () => {
             if (this.isDay) {
+                button.textContent = "Night";
                 console.log("해가 져요");
                 this.sheepCanvas.sunRise(false);
                 this.isDay = false;
             } else {
+                button.textContent = "Day";
                 console.log("해가 떠요");
                 this.sheepCanvas.sunRise(true);
                 this.isDay = true;
