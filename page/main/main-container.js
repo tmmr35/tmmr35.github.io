@@ -1,4 +1,7 @@
 import { Container } from "../../component/container.js";
+import { SunriseButton } from "./sunrise-button.js";
+import { SummonSheepButton } from "./summon-sheep-button.js";
+import { ContentButton } from "./content-button.js";
 
 export class MainContainer {
     constructor(sheepCanvas) {
@@ -19,6 +22,8 @@ export class MainContainer {
         this.container = containerInstance.getElement();
         this.renderNavButton();
         this.renderSunriseButton();
+        this.renderSummonSheepButton();
+        this.renderContentButton();
     }
 
     renderNavButton() {
@@ -34,29 +39,19 @@ export class MainContainer {
     }
 
     renderSunriseButton() {
-        const button = document.createElement("button");
+        const sunriseBtn = new SunriseButton(this.sheepCanvas);
 
-        if (this.isDay) {
-            button.textContent = "Day";
-        } else {
-            button.textContent = "Night";
-        }
-        button.className = "float-button";
+        this.container.appendChild(sunriseBtn.getElement());
+    }
 
-        button.addEventListener("click", () => {
-            if (this.isDay) {
-                button.textContent = "Night";
-                console.log("해가 져요");
-                this.sheepCanvas.sunRise(false);
-                this.isDay = false;
-            } else {
-                button.textContent = "Day";
-                console.log("해가 떠요");
-                this.sheepCanvas.sunRise(true);
-                this.isDay = true;
-            }
-        });
+    renderSummonSheepButton() {
+        const summonSheepBtn = new SummonSheepButton(this.sheepCanvas);
 
-        this.container.appendChild(button);
+        this.container.appendChild(summonSheepBtn.getElement());
+    }
+
+    renderContentButton() {
+        const contentBtn = new ContentButton();
+        this.container.appendChild(contentBtn.getElement());
     }
 }
